@@ -9,15 +9,15 @@ Format: CSV
 Architecture:
   Data Lake on S3:
   
-    Bronze Layer: Raw data is ingested into the Bronze bucket.
-    Silver Layer: Data is cleaned, transformed, and stored in the Silver bucket.
-    Gold Layer: Analytics-ready data is stored in the Gold bucket.
-  
+  1)Bronze Layer: Raw data is ingested into the Bronze bucket.
+  2)Silver Layer: Data is cleaned, transformed, and stored in the Silver bucket.
+  3)Gold Layer: Analytics-ready data is stored in the Gold bucket.
+
   ETL Pipelines Using Glue:
 
-    Extract raw data from the S3 Bronze layer.
-    Transform and clean data, then load it into the S3 Silver layer.
-    Further refine and process data, loading the final analytics-ready data into the S3 Gold layer.
+  1)Extract raw data from the S3 Bronze layer.
+  2)Transform and clean data, then load it into the S3 Silver layer.
+  3)Further refine and process data, loading the final analytics-ready data into the S3 Gold layer.
     
 Data Warehouse Using Redshift:
 
