@@ -1,0 +1,55 @@
+CREATE TABLE public.dim_customer (
+    customer_id character varying(255) NOT NULL ENCODE lzo
+    distkey
+,
+        customer_zip_code character varying(255) NOT NULL ENCODE lzo,
+        customer_city character varying(255) NOT NULL ENCODE lzo,
+        customer_state character varying(255) NOT NULL ENCODE bytedict
+) DISTSTYLE AUTO;
+
+CREATE TABLE public.dim_product (
+    product_id character varying(255) NOT NULL ENCODE lzo,
+    product_weight_g real ENCODE raw,
+    product_length_cm real ENCODE raw,
+    product_height_cm real ENCODE raw,
+    product_width_cm real ENCODE raw,
+    product_category character varying(255) ENCODE lzo
+) DISTSTYLE AUTO;
+
+CREATE TABLE public.dim_reviews (
+    review_id character varying(255) NOT NULL ENCODE lzo,
+    order_id character varying(255) ENCODE lzo,
+    review_score real ENCODE raw,
+    review_comment_title character varying(255) ENCODE lzo,
+    review_comment_message character varying(255) ENCODE lzo,
+    review_creation_date date ENCODE az64,
+    review_answer_timestamp timestamp without time zone ENCODE az64
+) DISTSTYLE AUTO;
+
+CREATE TABLE public.dim_seller (
+    seller_id character varying(255) NOT NULL ENCODE lzo
+    distkey
+,
+        seller_zip_code character varying(255) NOT NULL ENCODE lzo,
+        seller_city character varying(255) NOT NULL ENCODE lzo,
+        seller_state character varying(255) NOT NULL ENCODE lzo
+) DISTSTYLE AUTO;
+
+CREATE TABLE public.fact_order (
+    order_id character varying(255) NOT NULL ENCODE lzo
+    distkey
+,
+        customer_id character varying(255) ENCODE lzo,
+        order_status character varying(255) ENCODE lzo,
+        order_purchase_date date ENCODE az64,
+        order_delivered_date date ENCODE az64,
+        order_estimated_delivery_date date ENCODE az64,
+        estimated_days_to_delivery integer ENCODE az64,
+        actual_delivery_in_days integer ENCODE az64,
+        product_id character varying(255) ENCODE lzo,
+        seller_id character varying(255) ENCODE lzo,
+        price real ENCODE raw,
+        freight_value real ENCODE raw,
+        payment_type character varying(255) ENCODE lzo,
+        total_amount_per_order_id real ENCODE raw
+) DISTSTYLE AUTO;
