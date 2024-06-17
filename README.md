@@ -8,7 +8,7 @@
 
 ### Part 2: Data Lake on S3
 
-- Load the Kaggle Brazilian E-Commerce Public Dataset by Olist into an S3 bucket as CSV files.
+- Load the Kaggle [Brazilian E-Commerce Public Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce?select=product_category_name_translation.csv) by Olist into an S3 bucket as CSV files.
 - Utilize S3 as a data lake with a Medalian architecture, where data is processed through Bronze (raw), Silver (cleaned), and Gold (analytics-ready) layers using AWS Glue for all 
  ETL operations, aligning the data with the dimensional model from Part 1.
 
