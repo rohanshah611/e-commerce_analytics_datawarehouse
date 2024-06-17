@@ -1,50 +1,25 @@
-# E-Commerce_analytics_datawarehouse
+# E-Commerce Data Analysis with S3 Data Lake and Redshift Data Warehouse
 
-Project Scope: Sales Data Insights for E-Commerce
-This GitHub project aims to demonstrate expertise in constructing a scalable, resilient, and secure data analytics pipeline using the following AWS services: S3 (data lake), Glue (ETL), Redshift (data warehouse), and Quicksight (business intelligence). The project is designed to generate actionable executive insights from sales data of an e-commerce website, using best architecture principles.
+## Project overview: This project focuses on building a robust data engineering pipeline on AWS for analyzing e-commerce transaction data. The pipeline is logically divided into four parts:
 
-Data Source:
-Dataset: Kaggle's Brazilian E-Commerce Public Dataset by Olist
-Format: CSV
-Architecture:
-  Data Lake on S3:
+### Part 1: Converting Data Model
+
+- Transform transactional data into a dimensional model optimized for analytics, employing a star schema for efficient querying and reporting.
+
+### Part 2: Data Lake on S3
+
+- Load the Kaggle Brazilian E-Commerce Public Dataset by Olist into an S3 bucket as CSV files.
+- Utilize S3 as a data lake with a Medalian architecture, where data is processed through Bronze (raw), Silver (cleaned), and Gold (analytics-ready) layers using AWS Glue for all 
+ ETL operations, aligning the data with the dimensional model from Part 1.
+
+### Part 3: Redshift Data Warehouse
+
+- Create a Redshift cluster and load the processed data from the S3 Gold layer into the data warehouse using AWS Glue.
+- Redshift is scalable, handling varying workloads seamlessly, and fault-tolerant with automated backups and replication. It ensures data security with encryption at rest and in transit, alongside robust access controls.
   
-  1) Bronze Layer: Raw data is ingested into the Bronze bucket.
-  
-  2) Silver Layer: Data is cleaned, transformed, and stored in the Silver bucket.
-  
-  3) Gold Layer: Analytics-ready data is stored in the Gold bucket.
+### Part 4: Business Intelligence with Quicksight
 
-  ETL Pipelines Using Glue:
-
-  1) Extract raw data from the S3 Bronze layer.
+- Load the analytics-ready data from the Gold layer into Quicksight.
+- Create interactive dashboards and reports for business intelligence and actionable insights.
   
-  2) Transform and clean data, then load it into the S3 Silver layer.
-  
-  3) Further refine and process data, loading the final analytics-ready data into the S3 Gold layer.
-    
-Data Warehouse Using Redshift:
-
-  1) Load the analytics-ready data from the S3 Gold layer into Redshift.
-  
-  2) Ensure data is optimized for query performance and scalability.
-  
-Business Intelligence Using Quicksight:
-
-  1) Connect Quicksight to Redshift.
-     
-  2) Create interactive dashboards and visualizations to generate actionable executive insights.
-     
-Goals:
-  1) Scalability: The architecture should handle varying data volumes efficiently.
-     
-  2) Resilience: Ensure data processing and storage solutions are robust and fault-tolerant.
-     
-  3) Security: Implement strong security measures to protect data at rest.
-
-Deliverables:
-
-Code Repository: Well-documented codebase showcasing the implementation of the data lake, ETL pipelines, data warehouse, and business intelligence dashboards.
-Architecture Diagrams: Visual representations of the data flow and architecture.
-Documentation: Comprehensive guide on how to set up and run the project, including prerequisites, configuration steps, and usage instructions.
-Sample Dashboards: Quicksight dashboards demonstrating key sales insights and metrics.
+This project demonstrates a comprehensive data engineering workflow, leveraging AWS services like S3, Glue, Redshift, and Quicksight for scalable, resilient, and secure data analytics.
