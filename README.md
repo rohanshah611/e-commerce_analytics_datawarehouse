@@ -94,4 +94,55 @@ Transform the data to fit the dimensional model as outlined in Part 1.
 
 AWS Glue pipelines can be configured to run on-demand, on a schedule using cron expressions in Glue Studio, or triggered by events using AWS Lambda.
 Each run can incrementally load data using Job bookmarks; however, for this guide, we will perform a bulk upload rather than incremental uploads.
+For additional information refer to [this](https://towardsdatascience.com/aws-glue-101-all-you-need-to-know-with-a-real-world-example-f34af17b782f) article. 
 
+
+# Part 3: Loading Data from S3 Datalake's Gold layer to Redshift cluster
+
+Before proceeding with the data loading process, ensure the following:
+
+## Redshift Cluster:
+
+- You have an existing Amazon Redshift cluster set up and running.(To create a Redshift cluster refer [this](https://medium.com/analytics-vidhya/getting-started-with-aws-redshift-43450cd6286c))
+- The cluster configuration meets your data warehousing needs (storage, compute resources).
+
+## AWS Glue Permissions:
+
+- An IAM role is assigned to your AWS Glue service with appropriate permissions.
+- This role should allow Glue to access and interact with your Redshift cluster. This includes:
+  - Reading and writing data in the Redshift cluster.
+  -  Accessing any necessary resources (e.g., S3 buckets) involved in the data transfer.
+ 
+ ## Allow Access to Redshift Clusters by appropriaelty setting up VPC/subnet Security groups:
+  - Ensure that the security group associated with Redshift cluster has correct inbound rules. 
+
+## Process Steps: Loading Data into Redshift Glue Database with Delta Handling
+1.  Define Redshift Tables:
+
+Design and create tables in Amazon Redshift based on the dimensional model established in Part 1.
+
+2.  Generate Redshift Schema (Optional):
+
+(This step can be skipped if the schema is already known)
+Create a crawler in AWS Glue to crawl the existing Redshift tables.
+This crawler will automatically discover and define the schema of your Redshift tables within the Glue Data Catalog.
+
+3.  Build ETL Pipeline for Each Table:
+
+Develop separate ETL (Extract, Transform, Load) pipelines in AWS Glue for each of the 5 tables.
+Each pipeline will:
+Extract data from its designated source (S3 buckets).
+Perform any necessary data transformations (cleaning, filtering, etc.).
+Load the processed data into the corresponding Redshift table within the Glue database.
+
+4. Manage Delta Loading (New Rows):
+
+Within the Glue ETL job's load step, configure mode to handle delta loading.
+This allows you to specify how new data should be integrated with the existing table:
+Append: Add new rows to the existing table without modifying existing data.
+Update: Identify and update existing rows based on specific criteria (requires a unique identifier).
+
+5.  Repeat for All Tables:
+
+Follow steps 3 and 4 to create and execute ETL pipelines for each of the remaining 4 tables.
+By following these steps, you can efficiently load data into your Redshift Glue database, ensuring only new data is added while maintaining the integrity of your existing data.
