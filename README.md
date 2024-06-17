@@ -146,3 +146,30 @@ Update: Identify and update existing rows based on specific criteria (requires a
 
 Follow steps 3 and 4 to create and execute ETL pipelines for each of the remaining 4 tables.
 By following these steps, you can efficiently load data into your Redshift Glue database, ensuring only new data is added while maintaining the integrity of your existing data.
+
+
+
+# Part 4 - Connect the Redshift Datawarehouse to Quicksight for Business Intelligence and reporting:
+
+![image](https://github.com/rohanshah611/e-commerce_analytics_datawarehouse/assets/47087825/a06c7961-5510-473f-9dcb-fe8367edbb50)
+
+
+# Project Conclusion:
+This project successfully established a comprehensive data engineering pipeline for e-commerce transaction data analysis using AWS. By leveraging S3 for a data lake, AWS Glue for ETL, Redshift for data warehousing, and Quicksight for business intelligence, we achieved a scalable, resilient, and secure system capable of providing actionable insights.
+
+ ## AWS Services Used:
+ - Amazon S3: For data lake storage.
+ 
+ - AWS Glue: For ETL operations and data cataloging.
+
+ - Amazon Redshift: For data warehousing.
+ 
+ - Amazon QuickSight: For business intelligence and reporting.
+ 
+ - AWS IAM: For managing access and permissions.
+
+
+
+
+
+
