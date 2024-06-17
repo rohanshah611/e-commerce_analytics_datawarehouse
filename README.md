@@ -31,7 +31,7 @@ This project demonstrates a comprehensive data engineering workflow, leveraging 
 
 Converting data from an ER model to a dimensional model, using Kimball's star schema, enhances data analysis. ER models, with their focus on detailed relationships, are complex and slow analysis. Dimensional models simplify data into categories and measures, speeding up retrieval and boosting performance for insights. Kimball's star schema organizes data around dimensions and a central fact table, accelerating analysis and enhancing decision-making with improved computing efficiency. For more detail on Kimball's star schema, [click here](https://www.holistics.io/books/setup-analytics/kimball-s-dimensional-data-modeling/).
 
-The E-commerce dataset spanning 2016-2018 comprises:
+## The E-commerce dataset spanning 2016-2018 comprises:
 
 1. Customers Dataset: Contains customer details and locations, essential for identifying unique customers and delivery addresses in the orders dataset.
 2. Geolocation Dataset: Provides Brazilian zip codes with latitude and longitude coordinates, used for spatial mapping and calculating distances between sellers and customers.
@@ -47,3 +47,9 @@ The E-commerce dataset spanning 2016-2018 comprises:
 
 
 
+## The ER Diagram for the following tables is as follows: 
+![image](https://github.com/rohanshah611/e-commerce_analytics_datawarehouse/assets/47087825/d1d4990e-a048-4a13-a3c1-1a7a77d3d4a6)
+ 
+
+## The Dimensional Model for the is as follows: 
+![Untitled Diagram](https://github.com/rohanshah611/e-commerce_analytics_datawarehouse/assets/47087825/5868789b-d119-4610-9c89-1b557d83d00a)
