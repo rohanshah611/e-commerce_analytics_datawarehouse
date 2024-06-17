@@ -23,3 +23,9 @@
 - Create interactive dashboards and reports for business intelligence and actionable insights.
   
 This project demonstrates a comprehensive data engineering workflow, leveraging AWS services like S3, Glue, Redshift, and Quicksight for scalable, resilient, and secure data analytics.
+
+
+
+# Part 1 - ER Model to Dimensional Model 
+
+Converting data from an ER model to a dimensional model, using Kimball's star schema, enhances data analysis. ER models, with their focus on detailed relationships, are complex and slow analysis. Dimensional models simplify data into categories and measures, speeding up retrieval and boosting performance for insights. Kimball's star schema organizes data around dimensions and a central fact table, accelerating analysis and enhancing decision-making with improved computing efficiency. For more detail on Kimball's star schema, [click here](https://www.holistics.io/books/setup-analytics/kimball-s-dimensional-data-modeling/).
