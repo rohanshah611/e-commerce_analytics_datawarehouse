@@ -53,3 +53,45 @@ Converting data from an ER model to a dimensional model, using Kimball's star sc
 
 ## The Dimensional Model for the is as follows: 
 ![Untitled Diagram](https://github.com/rohanshah611/e-commerce_analytics_datawarehouse/assets/47087825/5868789b-d119-4610-9c89-1b557d83d00a)
+
+
+# Part 2 - Load and enrich data in S3 based Data lake: 
+
+Creating a data lake on Amazon Web Services (AWS) using Simple Storage Service (S3) as the foundation is a strategic approach to managing vast amounts of data. S3 is renowned for its scalability, durability, and security, making it capable of storing diverse data formats, including text, images, videos, and binary files.
+
+A well-designed data lake goes beyond mere storage. It categorizes and processes data efficiently, ensuring it is readily available for analysis and insights. Leveraging the power of S3, businesses can harness the flexibility to store data in various formats—from structured data in relational databases to unstructured data from log files and social media feeds.
+
+This repository will guide you through designing your data lake on AWS S3 using the Medallion architecture. We'll split the data lake into staging  and analytics layers (bronze, silver, and gold S3 buckets) and highlight the use of AWS Glue for efficient ETL processes, creating a robust and scalable solution for your data management and analysis needs.
+
+ ## Step 1: Create S3 Buckets and Load Data
+
+Begin by creating the bronze, silver, and gold S3 buckets.
+Load the CSV data into the bronze bucket named ecommerce-bronze.
+<img width="1416" alt="Screenshot 2024-06-17 at 7 49 45 AM" src="https://github.com/rohanshah611/e-commerce_analytics_datawarehouse/assets/47087825/01ff6c32-e868-4065-84fd-13e45627a589">
+ ## Step 2: Configure IAM Role
+
+Navigate to IAM and create a role that grants access to Glue, S3, and Redshift.
+![image](https://github.com/rohanshah611/e-commerce_analytics_datawarehouse/assets/47087825/9f2d7690-6755-431a-911e-13aa93a770ac)
+
+ ## Step 3: Set Up AWS Glue Crawler
+
+In AWS Glue, create a Glue Crawler to scan the data in the bronze S3 bucket.
+This will determine the input schema and load the CSV data into a staging Glue database for further processing.
+
+ ## Step 4: Design the ETL Job Using AWS Glue
+
+Proceed to the Visual ETL pipeline in AWS Glue to create the ETL job.
+Select the appropriate source Glue crawler dataset and destination (silver bucket) locations.
+Provide the transformation logic in the script section, including deduplication, datatype changes, and column renaming.
+![image](https://github.com/rohanshah611/e-commerce_analytics_datawarehouse/assets/47087825/ad48ab6c-1871-44da-825d-7b12aea5ed04)
+
+ ## Step 5: Execute ETL from Silver to Gold Bucket
+
+Repeat the ETL process to move data from the silver bucket to the gold bucket.
+Transform the data to fit the dimensional model as outlined in Part 1.
+
+## Additional Notes:
+
+AWS Glue pipelines can be configured to run on-demand, on a schedule using cron expressions in Glue Studio, or triggered by events using AWS Lambda.
+Each run can incrementally load data using Job bookmarks; however, for this guide, we will perform a bulk upload rather than incremental uploads.
+
