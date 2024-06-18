@@ -24,6 +24,9 @@
   
 This project demonstrates a comprehensive data engineering workflow, leveraging AWS services like S3, Glue, Redshift, and Quicksight for scalable, resilient, and secure data analytics.
 
+# Architecture Diagram:
+
+![image](https://github.com/rohanshah611/e-commerce_analytics_datawarehouse/assets/47087825/a7bbadaa-c9ba-4213-a8d2-fae6b01400b2)
 
 
 
